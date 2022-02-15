@@ -11,6 +11,7 @@ class MyTheme {
         bodyText2: TextStyle(color: Colors.white, fontSize: 24),
       ),
     ),
+    iconTheme: const IconThemeData(color: Colors.white54),
   );
   static const linkText =
       TextStyle(color: Color.fromARGB(255, 78, 168, 241), fontSize: 24);

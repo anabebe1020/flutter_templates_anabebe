@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_templates_anabebe/badge/page.dart';
 import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_templates_anabebe/page_view/home_page.dart';
 import 'package:flutter_templates_anabebe/page_view/provider.dart';
@@ -11,6 +12,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pageViewTitle = ref.watch(pageViewTitleProvider);
+    final badgeTitle = ref.watch(badgeTitleProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contents'),
@@ -30,6 +32,7 @@ class HomePage extends ConsumerWidget {
       body: ListView(
         children: [
           ContentsItem(title: pageViewTitle, widget: PageViewHomePage()),
+          ContentsItem(title: badgeTitle, widget: const BadgePage()),
         ],
       ),
     );
@@ -47,6 +50,14 @@ class ContentsItem extends StatelessWidget {
     return Container(
       color: Colors.black12.withOpacity(0.1),
       height: 64,
+      /*
+      decoration: BoxDecoration(
+        color: Colors.black12.withOpacity(0.1),
+        border: const Border.symmetric(
+          horizontal: BorderSide(color: Colors.grey),
+        ),
+      ),
+      */
       child: TextButton(
         child: Text(title, style: MyTheme.linkText),
         onPressed: () {
@@ -57,6 +68,7 @@ class ContentsItem extends StatelessWidget {
           ));
         },
       ),
+      margin: const EdgeInsets.symmetric(vertical: 1.5),
     );
   }
 }

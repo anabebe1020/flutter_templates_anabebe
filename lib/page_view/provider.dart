@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final pageViewTitleProvider = StateProvider((ref) => 'PageView');
+final badgeTitleProvider = StateProvider((ref) => 'Badge');
 final pageATitleProvider = StateProvider((ref) => 'Page A');
 final pageBTitleProvider = StateProvider((ref) => 'Page B');
 final pageCTitleProvider = StateProvider((ref) => 'Page C');
