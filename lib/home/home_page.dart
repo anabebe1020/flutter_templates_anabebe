@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_templates_anabebe/page_view/home_page.dart';
 import 'package:flutter_templates_anabebe/page_view/provider.dart';
 import 'package:flutter_templates_anabebe/settings/setting_page.dart';
@@ -47,7 +48,7 @@ class ContentsItem extends StatelessWidget {
       color: Colors.black12.withOpacity(0.1),
       height: 64,
       child: TextButton(
-        child: Text(title, style: const TextStyle(fontSize: 18)),
+        child: Text(title, style: MyTheme.linkText),
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {

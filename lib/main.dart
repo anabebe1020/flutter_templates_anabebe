@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_templates_anabebe/home/home_page.dart';
 
 void main() {
@@ -15,10 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Anabebe Templates',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-      ),
+      theme: MyTheme.main,
       home: const HomePage(),
     );
   }

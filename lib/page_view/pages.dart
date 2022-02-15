@@ -10,7 +10,7 @@ class APage extends ConsumerWidget {
     final title = ref.watch(pageATitleProvider);
     return Container(
       alignment: Alignment.center,
-      child: Text(title, style: const TextStyle(fontSize: 18)),
+      child: Text(title, style: Theme.of(context).textTheme.bodyText1),
       padding: const EdgeInsets.all(20),
     );
   }
@@ -24,7 +24,7 @@ class BPage extends ConsumerWidget {
     final title = ref.watch(pageBTitleProvider);
     return Container(
       alignment: Alignment.center,
-      child: Text(title, style: const TextStyle(fontSize: 18)),
+      child: Text(title, style: Theme.of(context).textTheme.bodyText1),
       padding: const EdgeInsets.all(20),
     );
   }
@@ -38,7 +38,7 @@ class CPage extends ConsumerWidget {
     final title = ref.watch(pageCTitleProvider);
     return Container(
       alignment: Alignment.center,
-      child: Text(title, style: const TextStyle(fontSize: 18)),
+      child: Text(title, style: Theme.of(context).textTheme.bodyText1),
       padding: const EdgeInsets.all(20),
     );
   }
@@ -52,7 +52,7 @@ class DPage extends ConsumerWidget {
     final title = ref.watch(pageDTitleProvider);
     return Container(
       alignment: Alignment.center,
-      child: Text(title, style: const TextStyle(fontSize: 18)),
+      child: Text(title, style: Theme.of(context).textTheme.bodyText1),
       padding: const EdgeInsets.all(20),
     );
   }
@@ -66,7 +66,7 @@ class EPage extends ConsumerWidget {
     final title = ref.watch(pageETitleProvider);
     return Container(
       alignment: Alignment.center,
-      child: Text(title, style: const TextStyle(fontSize: 18)),
+      child: Text(title, style: Theme.of(context).textTheme.bodyText1),
       padding: const EdgeInsets.all(20),
     );
   }
