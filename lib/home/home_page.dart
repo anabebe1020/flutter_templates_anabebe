@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_templates_anabebe/badge/page.dart';
 import 'package:flutter_templates_anabebe/common/themes.dart';
-import 'package:flutter_templates_anabebe/page_view/home_page.dart';
-import 'package:flutter_templates_anabebe/page_view/provider.dart';
+import 'package:flutter_templates_anabebe/contents/badge/page.dart';
+import 'package:flutter_templates_anabebe/contents/page_view/home_page.dart';
+import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 import 'package:flutter_templates_anabebe/settings/setting_page.dart';
 
 class HomePage extends ConsumerWidget {
