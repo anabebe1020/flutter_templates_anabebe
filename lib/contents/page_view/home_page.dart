@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_templates_anabebe/page_view/pages.dart';
-import 'package:flutter_templates_anabebe/page_view/provider.dart';
+import 'package:flutter_templates_anabebe/contents/page_view/pages.dart';
+import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 
 class PageViewHomePage extends ConsumerWidget {
   PageViewHomePage({Key? key}) : super(key: key);

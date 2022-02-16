@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_templates_anabebe/page_view/provider.dart';
+import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 
 class APage extends ConsumerWidget {
   const APage({Key? key}) : super(key: key);

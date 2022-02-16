@@ -1,8 +1,8 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_templates_anabebe/badge/provider.dart';
-import 'package:flutter_templates_anabebe/page_view/provider.dart';
+import 'package:flutter_templates_anabebe/contents/badge/provider.dart';
+import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 
 class BadgePage extends ConsumerWidget {
   const BadgePage({Key? key}) : super(key: key);
