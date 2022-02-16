@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anabebe.flutter_templates_anabebe">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="flutter_templates_anabebe"
         android:name="${applicationName}"
