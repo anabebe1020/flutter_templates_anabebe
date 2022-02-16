@@ -1,15 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_templates_anabebe/settings/provider.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends ConsumerWidget {
   const SettingPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: ListView(),
+      body: ListView(
+        children: [
+          _darkMode(context, ref),
+        ],
+      ),
+    );
+  }
+
+  Widget _darkMode(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    return Container(
+      height: 64,
+      child: ListTile(
+        leading: const Icon(Icons.brightness_2_outlined, size: 24),
+        title: Text('DarkMode', style: Theme.of(context).textTheme.bodyText2),
+        trailing: Switch(
+          value: darkMode.isDark,
+          activeColor: Colors.lightBlue,
+          activeTrackColor: Colors.grey,
+          inactiveThumbColor: Colors.blueGrey,
+          inactiveTrackColor: Colors.grey,
+          onChanged: (bool bl) {
+            darkMode.onModeChanged();
+          },
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 1.5),
     );
   }
 }

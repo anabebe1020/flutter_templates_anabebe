@@ -50,14 +50,6 @@ class ContentsItem extends StatelessWidget {
     return Container(
       color: Colors.black12.withOpacity(0.1),
       height: 64,
-      /*
-      decoration: BoxDecoration(
-        color: Colors.black12.withOpacity(0.1),
-        border: const Border.symmetric(
-          horizontal: BorderSide(color: Colors.grey),
-        ),
-      ),
-      */
       child: TextButton(
         child: Text(title, style: MyTheme.linkText),
         onPressed: () {
