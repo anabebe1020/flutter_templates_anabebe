@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 class MyTheme {
   static final light = ThemeData(
     brightness: Brightness.light,
-    primarySwatch: Colors.blue,
+    primarySwatch: Colors.blueGrey,
     textTheme: GoogleFonts.montserratTextTheme(
       const TextTheme(
-        bodyText1: TextStyle(color: Colors.black45, fontSize: 32),
-        bodyText2: TextStyle(color: Colors.black45, fontSize: 24),
+        bodyText1: TextStyle(color: Colors.black54, fontSize: 32),
+        bodyText2: TextStyle(color: Colors.black54, fontSize: 24),
       ),
     ),
     iconTheme: const IconThemeData(color: Colors.black54),
