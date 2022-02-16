@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final badgeTitleProvider = StateProvider((ref) => 'Badge');
+
 final badgeProvider = ChangeNotifierProvider<BadgeNotifier>(
   (ref) => BadgeNotifier(),
 );
@@ -11,13 +13,11 @@ class BadgeNotifier extends ChangeNotifier {
 
   void onPressPlus() {
     _count++;
-    print('onPressPlus: $count');
     notifyListeners();
   }
 
   void onPressMinus() {
     _count--;
-    print('onPressMinus: $count');
     notifyListeners();
   }
 }

@@ -2,7 +2,6 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_templates_anabebe/contents/badge/provider.dart';
-import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 
 class BadgePage extends ConsumerWidget {
   const BadgePage({Key? key}) : super(key: key);
@@ -28,12 +27,14 @@ class BadgePage extends ConsumerWidget {
       ),
       persistentFooterButtons: [
         FloatingActionButton(
+          heroTag: 'plus',
           child: Icon(Icons.add, color: Theme.of(context).primaryColor),
           onPressed: () {
             badgeProv.onPressPlus();
           },
         ),
         FloatingActionButton(
+          heroTag: 'minus',
           child: Icon(Icons.remove, color: Theme.of(context).primaryColor),
           onPressed: () {
             badgeProv.onPressMinus();
