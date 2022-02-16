@@ -15,7 +15,8 @@ A template for implementing various Flutter widgets and other features.
 ## contents
 
 - PageView
-- Badge
+- Badges
+- RefreshIndicator
 
 ## other
 

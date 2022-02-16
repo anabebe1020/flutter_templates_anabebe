@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final badgeTitleProvider = StateProvider((ref) => 'Badge');
+final badgeTitleProvider = StateProvider((ref) => 'Badges');
 
 final badgeProvider = ChangeNotifierProvider<BadgeNotifier>(
   (ref) => BadgeNotifier(),
