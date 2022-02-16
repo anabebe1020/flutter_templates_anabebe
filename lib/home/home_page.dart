@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_templates_anabebe/contents/badge/page.dart';
+import 'package:flutter_templates_anabebe/contents/badge/provider.dart';
 import 'package:flutter_templates_anabebe/contents/page_view/home_page.dart';
 import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
+import 'package:flutter_templates_anabebe/contents/refresh/page.dart';
+import 'package:flutter_templates_anabebe/contents/refresh/provider.dart';
+//import 'package:flutter_templates_anabebe/contents/sample/page.dart';
+//import 'package:flutter_templates_anabebe/contents/sample/provider.dart';
 import 'package:flutter_templates_anabebe/settings/setting_page.dart';
 
 class HomePage extends ConsumerWidget {
@@ -11,8 +16,10 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageViewTitle = ref.watch(pageViewTitleProvider);
     final badgeTitle = ref.watch(badgeTitleProvider);
+    final pageViewTitle = ref.watch(pageViewTitleProvider);
+    final refreshTitle = ref.watch(refreshTitleProvider);
+    //final sampleTitle = ref.watch(sampleTitleProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contents'),
@@ -33,6 +40,8 @@ class HomePage extends ConsumerWidget {
         children: [
           ContentsItem(title: pageViewTitle, widget: PageViewHomePage()),
           ContentsItem(title: badgeTitle, widget: const BadgePage()),
+          ContentsItem(title: refreshTitle, widget: const RefreshPage()),
+          //ContentsItem(title: sampleTitle, widget: const SamplePage()),
         ],
       ),
     );
