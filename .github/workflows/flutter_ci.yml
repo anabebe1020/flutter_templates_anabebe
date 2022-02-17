@@ -1,0 +1,63 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - run: echo "${{ github.event.head_commit.message }}"
+      
+  build:
+    runs-on: macOS-latest
+    needs: prepare
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: '1.8'
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.10.1'
+
+      - name: Set up test tools
+        run: |
+          flutter pub get
+          flutter pub global activate dart_dot_reporter
+          flutter pub global activate junitreport
+          pip install junit2html
+
+      - name: Test
+        run: |
+          export PATH=$PATH:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
+          export PATH=$PATH:${FLUTTER_HOME}/.pub-cache/bin
+          ./test.sh
+
+      - name: Arcive test results
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-reports
+          path: test-reports
+
+      - name: Slack notification
+        if: always()
+        uses: homoluctus/slatify@master
+        with:
+          type: ${{ job.status }}
+          job_name: '*Build and DebugCheck*'
+          channel: '#general'
+          commit: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          url: ${{ secrets.SLACK_WEBHOOK_URL }}
