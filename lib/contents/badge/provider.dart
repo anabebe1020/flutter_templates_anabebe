@@ -1,23 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final badgeTitleProvider = StateProvider((ref) => 'Badges');
+final badgeTitleProvider = Provider((ref) => 'Badges');
 
-final badgeProvider = ChangeNotifierProvider<BadgeNotifier>(
-  (ref) => BadgeNotifier(),
+final badgeProvider = StateNotifierProvider<_BadgeNotifier, int>(
+  (ref) => _BadgeNotifier(),
 );
 
-class BadgeNotifier extends ChangeNotifier {
-  int _count = 0;
-  int get count => _count;
+class _BadgeNotifier extends StateNotifier<int> {
+  _BadgeNotifier() : super(0);
 
   void onPressPlus() {
-    _count++;
-    notifyListeners();
+    state++;
   }
 
   void onPressMinus() {
-    _count--;
-    notifyListeners();
+    state--;
   }
 }

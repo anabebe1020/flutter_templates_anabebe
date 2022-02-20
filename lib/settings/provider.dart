@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final darkModeProvider = ChangeNotifierProvider<DarkModeNotifier>(
-  (ref) => DarkModeNotifier(),
+final darkModeProvider = StateNotifierProvider<_DarkModeNotifier, bool>(
+  (ref) => _DarkModeNotifier(),
 );
 
-class DarkModeNotifier extends ChangeNotifier {
-  bool _isDark = true;
-  bool get isDark => _isDark;
+class _DarkModeNotifier extends StateNotifier<bool> {
+  _DarkModeNotifier() : super(true);
 
   void onModeChanged() {
-    _isDark = !_isDark;
-    notifyListeners();
+    state = !state;
   }
 }

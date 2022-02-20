@@ -20,20 +20,21 @@ class SettingPage extends ConsumerWidget {
   }
 
   Widget _darkMode(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
+    final isDarkMode = ref.watch(darkModeProvider);
+    final notifier = ref.watch(darkModeProvider.notifier);
     return Container(
       height: 64,
       child: ListTile(
         leading: const Icon(Icons.brightness_2_outlined, size: 24),
         title: Text('DarkMode', style: Theme.of(context).textTheme.bodyText2),
         trailing: Switch(
-          value: darkMode.isDark,
+          value: isDarkMode,
           activeColor: Colors.lightBlue,
           activeTrackColor: Colors.grey,
           inactiveThumbColor: Colors.blueGrey,
           inactiveTrackColor: Colors.grey,
           onChanged: (bool bl) {
-            darkMode.onModeChanged();
+            notifier.onModeChanged();
           },
         ),
       ),

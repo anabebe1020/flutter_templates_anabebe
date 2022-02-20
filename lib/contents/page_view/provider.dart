@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final pageViewTitleProvider = StateProvider((ref) => 'PageView');
-final pageATitleProvider = StateProvider((ref) => 'Page A');
-final pageBTitleProvider = StateProvider((ref) => 'Page B');
-final pageCTitleProvider = StateProvider((ref) => 'Page C');
-final pageDTitleProvider = StateProvider((ref) => 'Page D');
-final pageETitleProvider = StateProvider((ref) => 'Page E');
+final _pageTitles = ['Page A', 'Page B', 'Page C', 'Page D', 'Page E'];
+final pageViewTitleProvider = Provider((ref) => 'PageView');
+final pageTitleProvider = Provider((ref) => _pageTitles);
 
-final pageChangeProvider = ChangeNotifierProvider<PageChangeNotifier>(
-  (ref) => PageChangeNotifier(),
+final pageChangeProvider = StateNotifierProvider<_PageChangeNotifier, int>(
+  (ref) => _PageChangeNotifier(),
 );
 
-class PageChangeNotifier extends ChangeNotifier {
-  int currentIndex = 0;
+class _PageChangeNotifier extends StateNotifier<int> {
+  _PageChangeNotifier() : super(0);
 
   void onPageChanged(int index) {
-    currentIndex = index;
-    notifyListeners();
+    state = index;
   }
 
   void onItemTapped(int index, PageController pageController) {
@@ -27,16 +23,13 @@ class PageChangeNotifier extends ChangeNotifier {
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
     );
-    notifyListeners();
   }
 
   void nextPageChange() {
-    currentIndex = currentIndex++;
-    notifyListeners();
+    state++;
   }
 
   void prevPageChange() {
-    currentIndex = currentIndex--;
-    notifyListeners();
+    state--;
   }
 }

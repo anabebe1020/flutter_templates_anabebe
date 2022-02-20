@@ -8,7 +8,7 @@ class RefreshPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title = ref.watch(refreshTitleProvider);
-    //final refresh = ref.watch(refreshProvider);
+    final refresh = ref.watch(refreshProvider.future);
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Container(
@@ -18,7 +18,7 @@ class RefreshPage extends ConsumerWidget {
           backgroundColor: Theme.of(context).iconTheme.color,
           displacement: 150,
           onRefresh: () async {
-            await _refresh();
+            await refresh;
           },
           child: ListView(
             children: [
@@ -43,9 +43,5 @@ class RefreshPage extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _refresh() async {
-    await Future.delayed(const Duration(seconds: 2));
   }
 }

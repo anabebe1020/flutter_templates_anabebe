@@ -7,24 +7,20 @@ class PageViewHomePage extends ConsumerWidget {
   PageViewHomePage({Key? key}) : super(key: key);
 
   final _pageController = PageController();
-  static final List<Widget> _pageList = [
-    const APage(),
-    const BPage(),
-    const CPage(),
-    const DPage(),
-    const EPage(),
-  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // providers
     final title = ref.watch(pageViewTitleProvider);
-    final pageChange = ref.watch(pageChangeProvider);
-    final titleA = ref.watch(pageATitleProvider);
-    final titleB = ref.watch(pageBTitleProvider);
-    final titleC = ref.watch(pageCTitleProvider);
-    final titleD = ref.watch(pageDTitleProvider);
-    final titleE = ref.watch(pageETitleProvider);
+    final index = ref.watch(pageChangeProvider);
+    final notifier = ref.watch(pageChangeProvider.notifier);
+    final pagetitles = ref.watch(pageTitleProvider);
+    final barItems = pagetitles
+        .map((title) => BottomNavigationBarItem(
+            icon: const Icon(Icons.note_outlined), label: title))
+        .toList();
+    final pageList =
+        pagetitles.map((title) => PageWidget(title: title)).toList();
     // widgets
     return Scaffold(
       appBar: AppBar(title: Text(title)),
@@ -33,9 +29,9 @@ class PageViewHomePage extends ConsumerWidget {
           PageView(
             controller: _pageController,
             onPageChanged: (index) {
-              pageChange.onPageChanged(index);
+              notifier.onPageChanged(index);
             },
-            children: _pageList,
+            children: pageList,
           ),
           Container(
             alignment: Alignment.center,
@@ -53,21 +49,10 @@ class PageViewHomePage extends ConsumerWidget {
         selectedItemColor: Colors.white70,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.note_outlined), label: titleA),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.note_outlined), label: titleB),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.note_outlined), label: titleC),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.note_outlined), label: titleD),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.note_outlined), label: titleE),
-        ],
-        currentIndex: pageChange.currentIndex,
+        items: barItems,
+        currentIndex: index,
         onTap: (index) {
-          pageChange.onItemTapped(index, _pageController);
+          notifier.onItemTapped(index, _pageController);
         },
       ),
     );

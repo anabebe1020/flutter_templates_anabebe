@@ -15,10 +15,10 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
+    final isDarkMode = ref.watch(darkModeProvider);
     return MaterialApp(
       title: 'Anabebe Templates',
-      theme: darkMode.isDark ? MyTheme.dark : MyTheme.light,
+      theme: isDarkMode ? MyTheme.dark : MyTheme.light,
       home: const HomePage(),
     );
   }

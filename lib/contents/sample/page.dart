@@ -8,26 +8,27 @@ class SamplePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title = ref.watch(sampleTitleProvider);
-    final sampleProv = ref.watch(sampleProvider);
+    final count = ref.watch(sampleProvider);
+    final notifier = ref.watch(sampleProvider.notifier);
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Container(
         alignment: Alignment.center,
-        child: Text(sampleProv.count.toString()),
+        child: Text(count.toString()),
       ),
       persistentFooterButtons: [
         FloatingActionButton(
             heroTag: 'clear',
             child: const Icon(Icons.clear),
-            onPressed: () => sampleProv.onPressClear()),
+            onPressed: () => notifier.onPressClear()),
         FloatingActionButton(
             heroTag: 'plus',
             child: const Icon(Icons.add),
-            onPressed: () => sampleProv.onPressPlus()),
+            onPressed: () => notifier.onPressPlus()),
         FloatingActionButton(
             heroTag: 'minus',
             child: const Icon(Icons.remove),
-            onPressed: () => sampleProv.onPressMinus()),
+            onPressed: () => notifier.onPressMinus()),
       ],
     );
   }

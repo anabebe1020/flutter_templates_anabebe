@@ -9,7 +9,8 @@ class BadgePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title = ref.watch(badgeTitleProvider);
-    final badgeProv = ref.watch(badgeProvider);
+    final count = ref.watch(badgeProvider);
+    final notifier = ref.watch(badgeProvider.notifier);
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Container(
@@ -18,7 +19,7 @@ class BadgePage extends ConsumerWidget {
         child: Badge(
           position: BadgePosition.topEnd(top: 10, end: -60),
           padding: const EdgeInsets.all(8),
-          badgeContent: Text(badgeProv.count.toString()),
+          badgeContent: Text(count.toString()),
           child: IconButton(
             icon: const Icon(Icons.mail, size: 100),
             onPressed: () {},
@@ -30,14 +31,14 @@ class BadgePage extends ConsumerWidget {
           heroTag: 'plus',
           child: Icon(Icons.add, color: Theme.of(context).primaryColor),
           onPressed: () {
-            badgeProv.onPressPlus();
+            notifier.onPressPlus();
           },
         ),
         FloatingActionButton(
           heroTag: 'minus',
           child: Icon(Icons.remove, color: Theme.of(context).primaryColor),
           onPressed: () {
-            badgeProv.onPressMinus();
+            notifier.onPressMinus();
           },
         ),
       ],
