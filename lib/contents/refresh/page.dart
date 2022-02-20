@@ -17,9 +17,7 @@ class RefreshPage extends ConsumerWidget {
         child: RefreshIndicator(
           backgroundColor: Theme.of(context).iconTheme.color,
           displacement: 150,
-          onRefresh: () async {
-            await refresh;
-          },
+          onRefresh: () async => await refresh,
           child: ListView(
             children: [
               Container(
