@@ -20,7 +20,6 @@ class SettingPage extends ConsumerWidget {
   }
 
   Widget _darkMode(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(darkModeProvider);
     final notifier = ref.watch(darkModeProvider.notifier);
     return Container(
       height: 64,
@@ -28,13 +27,13 @@ class SettingPage extends ConsumerWidget {
         leading: const Icon(Icons.brightness_2_outlined, size: 24),
         title: Text('DarkMode', style: Theme.of(context).textTheme.bodyText2),
         trailing: Switch(
-          value: isDarkMode,
+          value: notifier.isDark,
           activeColor: Colors.lightBlue,
           activeTrackColor: Colors.grey,
           inactiveThumbColor: Colors.blueGrey,
           inactiveTrackColor: Colors.grey,
           onChanged: (bool bl) {
-            notifier.onModeChanged();
+            notifier.onModeChanged(bl);
           },
         ),
       ),

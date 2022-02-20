@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_templates_anabebe/home/home_page.dart';
 import 'package:flutter_templates_anabebe/settings/provider.dart';
 
@@ -15,10 +14,10 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(darkModeProvider);
+    final themeData = ref.watch(darkModeProvider);
     return MaterialApp(
       title: 'Anabebe Templates',
-      theme: isDarkMode ? MyTheme.dark : MyTheme.light,
+      theme: themeData,
       home: const HomePage(),
     );
   }

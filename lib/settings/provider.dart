@@ -1,13 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final darkModeProvider = StateNotifierProvider<_DarkModeNotifier, bool>(
+final darkModeProvider = StateNotifierProvider<_DarkModeNotifier, ThemeData>(
   (ref) => _DarkModeNotifier(),
 );
 
-class _DarkModeNotifier extends StateNotifier<bool> {
-  _DarkModeNotifier() : super(true);
+class _DarkModeNotifier extends StateNotifier<ThemeData> {
+  _DarkModeNotifier() : super(MyTheme.dark);
 
-  void onModeChanged() {
-    state = !state;
+  bool get isDark => state == MyTheme.dark;
+
+  void onModeChanged(bool isDark) {
+    state = isDark ? MyTheme.dark : MyTheme.light;
   }
 }
