@@ -38,19 +38,6 @@ jobs:
           flutter pub global activate junitreport
           pip install junit2html
 
-      - name: Test
-        run: |
-          export PATH=$PATH:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
-          export PATH=$PATH:${FLUTTER_HOME}/.pub-cache/bin
-          ./test.sh
-
-      - name: Arcive test results
-        if: always()
-        uses: actions/upload-artifact@v1
-        with:
-          name: test-reports
-          path: test-reports
-
       - name: Slack notification
         if: always()
         uses: homoluctus/slatify@master
