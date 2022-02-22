@@ -18,6 +18,11 @@ A template for implementing various Flutter widgets and other features.
 - Badges
 - RefreshIndicator
 
+## ci / cd
+
+- GitHub Actions
+- Codemagic
+
 ## other
 
 - Can be set to dark mode.
