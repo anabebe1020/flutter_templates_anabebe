@@ -7,6 +7,8 @@ import 'package:flutter_templates_anabebe/contents/page_view/home_page.dart';
 import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/page.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/provider.dart';
+import 'package:flutter_templates_anabebe/contents/bottom_modal/page.dart';
+import 'package:flutter_templates_anabebe/contents/bottom_modal/provider.dart';
 //import 'package:flutter_templates_anabebe/contents/sample/page.dart';
 //import 'package:flutter_templates_anabebe/contents/sample/provider.dart';
 import 'package:flutter_templates_anabebe/settings/setting_page.dart';
@@ -19,6 +21,7 @@ class HomePage extends ConsumerWidget {
     final badgeTitle = ref.watch(badgeTitleProvider);
     final pageViewTitle = ref.watch(pageViewTitleProvider);
     final refreshTitle = ref.watch(refreshTitleProvider);
+    final modalTitle = ref.watch(modalTitleProvider);
     //final sampleTitle = ref.watch(sampleTitleProvider);
     return Scaffold(
       appBar: AppBar(
@@ -41,6 +44,7 @@ class HomePage extends ConsumerWidget {
           ContentsItem(title: pageViewTitle, widget: PageViewHomePage()),
           ContentsItem(title: badgeTitle, widget: const BadgePage()),
           ContentsItem(title: refreshTitle, widget: const RefreshPage()),
+          ContentsItem(title: modalTitle, widget: const BottomModalPage()),
           //ContentsItem(title: sampleTitle, widget: const SamplePage()),
         ],
       ),
