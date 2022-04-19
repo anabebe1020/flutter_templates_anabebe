@@ -6,13 +6,15 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-
+  anabebe_packages:
+    git:
+      url: https://github.com/anabebe1020/anabebe_packages.git
+      ref: master
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^1.0.3
   google_fonts: ^2.3.1
