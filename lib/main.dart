@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_templates_anabebe/common/router.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/provider.dart';
-import 'package:flutter_templates_anabebe/home/home_page.dart';
 import 'package:flutter_templates_anabebe/settings/provider.dart';
 
 void main() {
@@ -17,10 +17,11 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeData = ref.watch(darkModeProvider);
     ref.watch(pullRefreshProvider.notifier).init();
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Anabebe Templates',
       theme: themeData,
-      home: const HomePage(),
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
     );
   }
 }

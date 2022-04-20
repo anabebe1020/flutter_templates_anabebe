@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_templates_anabebe/common/themes.dart';
-import 'package:flutter_templates_anabebe/contents/badge/page.dart';
 import 'package:flutter_templates_anabebe/contents/badge/provider.dart';
-import 'package:flutter_templates_anabebe/contents/bottom_modal/page.dart';
 import 'package:flutter_templates_anabebe/contents/bottom_modal/provider.dart';
-import 'package:flutter_templates_anabebe/contents/page_view/home_page.dart';
 import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
-import 'package:flutter_templates_anabebe/contents/refresh/page.dart';
-import 'package:flutter_templates_anabebe/contents/refresh/page2.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/provider.dart';
 //import 'package:flutter_templates_anabebe/contents/sample/page.dart';
 //import 'package:flutter_templates_anabebe/contents/sample/provider.dart';
 import 'package:flutter_templates_anabebe/settings/setting_page.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -44,12 +40,11 @@ class HomePage extends ConsumerWidget {
       ),
       body: ListView(
         children: [
-          ContentsItem(title: pageViewTitle, widget: PageViewHomePage()),
-          ContentsItem(title: badgeTitle, widget: const BadgePage()),
-          ContentsItem(title: refreshTitle, widget: const RefreshPage()),
-          ContentsItem(
-              title: pullRefreshTitle, widget: const PullRefreshPage()),
-          ContentsItem(title: modalTitle, widget: const BottomModalPage()),
+          ContentsItem(title: pageViewTitle, route: '/pageView'),
+          ContentsItem(title: badgeTitle, route: '/badges'),
+          ContentsItem(title: refreshTitle, route: '/refresh'),
+          ContentsItem(title: pullRefreshTitle, route: '/pullRefresh'),
+          ContentsItem(title: modalTitle, route: '/bottomModal'),
           //ContentsItem(title: sampleTitle, widget: const SamplePage()),
         ],
       ),
@@ -59,8 +54,8 @@ class HomePage extends ConsumerWidget {
 
 class ContentsItem extends StatelessWidget {
   final String title;
-  final Widget widget;
-  const ContentsItem({Key? key, required this.title, required this.widget})
+  final String route;
+  const ContentsItem({Key? key, required this.title, required this.route})
       : super(key: key);
 
   @override
@@ -71,11 +66,7 @@ class ContentsItem extends StatelessWidget {
       child: TextButton(
         child: Text(title, style: MyTheme.linkText),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) {
-              return widget;
-            },
-          ));
+          GoRouter.of(context).push(route);
         },
       ),
       margin: const EdgeInsets.symmetric(vertical: 1.5),
