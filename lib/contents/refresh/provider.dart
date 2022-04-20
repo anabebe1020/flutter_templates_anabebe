@@ -4,11 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final pLogger = Logger();
 
 final refreshTitleProvider = Provider((ref) => 'RefreshIndicator');
-
-final refreshProvider = FutureProvider<void>((ref) async {
-  await Future.delayed(const Duration(seconds: 2));
-});
-
 final pullRefreshTitleProvider = Provider((ref) => 'PullRefreshScrollView');
 
 // to View
@@ -26,5 +21,8 @@ class _PullRefreshNotifier extends StateNotifier<int> {
 
   void add() => state++;
 
-  void refresh() => state = 0;
+  Future<void> refresh() async {
+    await Future.delayed(const Duration(milliseconds: 800));
+    state = 0;
+  }
 }
