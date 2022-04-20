@@ -10,7 +10,7 @@ class PullRefreshPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final title = ref.watch(pullRefreshTitleProvider);
     final state = ref.watch(pullRefreshProvider);
-    final notifier = ref.watch(pullRefreshProvider.notifier);
+    final notifier = ref.read(pullRefreshProvider.notifier);
     //
     return Scaffold(
       appBar: AppBar(title: Text(title)),
@@ -21,9 +21,9 @@ class PullRefreshPage extends ConsumerWidget {
           scrollController: ScrollController(),
           onRefresh: () async => notifier.refresh(),
           child: ListView.builder(
-            itemCount: state.length,
+            itemCount: state + 1,
             itemBuilder: (context, index) {
-              return _listItem(context, state[index]);
+              return _listItem(context, index);
             },
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

@@ -12,39 +12,19 @@ final refreshProvider = FutureProvider<void>((ref) async {
 final pullRefreshTitleProvider = Provider((ref) => 'PullRefreshScrollView');
 
 // to View
-final pullRefreshProvider =
-    StateNotifierProvider<_PullRefreshNotifier, List<int>>(
+final pullRefreshProvider = StateNotifierProvider<_PullRefreshNotifier, int>(
   (ref) => _PullRefreshNotifier(),
 );
 
 // ViewModel
-class _PullRefreshNotifier extends StateNotifier<List<int>> {
-  _PullRefreshNotifier() : super([0]);
+class _PullRefreshNotifier extends StateNotifier<int> {
+  _PullRefreshNotifier() : super(0);
 
   void init() {
     pLogger.setup('_PullRefreshNotifier');
   }
 
-  void add() {
-    try {
-      pLogger.log('add start');
-      state.add(state.last + 1);
-      pLogger.log(state.toString());
-    } catch (e) {
-      rethrow;
-    } finally {
-      pLogger.log('add end');
-    }
-  }
+  void add() => state++;
 
-  void refresh() {
-    try {
-      pLogger.log('refresh start');
-      state = [0];
-    } catch (e) {
-      rethrow;
-    } finally {
-      pLogger.log('refresh end');
-    }
-  }
+  void refresh() => state = 0;
 }
