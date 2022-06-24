@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_templates_anabebe/common/themes.dart';
 import 'package:flutter_templates_anabebe/contents/badge/provider.dart';
 import 'package:flutter_templates_anabebe/contents/bottom_modal/provider.dart';
+import 'package:flutter_templates_anabebe/contents/emoji_picker/provider.dart';
 import 'package:flutter_templates_anabebe/contents/page_view/provider.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/provider.dart';
 //import 'package:flutter_templates_anabebe/contents/sample/page.dart';
@@ -20,6 +21,7 @@ class HomePage extends ConsumerWidget {
     final refreshTitle = ref.watch(refreshTitleProvider);
     final pullRefreshTitle = ref.watch(pullRefreshTitleProvider);
     final modalTitle = ref.watch(modalTitleProvider);
+    final emojiPickerTitle = ref.watch(emojiPickerTitleProvider);
     //final sampleTitle = ref.watch(sampleTitleProvider);
     return Scaffold(
       appBar: AppBar(
@@ -45,6 +47,7 @@ class HomePage extends ConsumerWidget {
           ContentsItem(title: refreshTitle, route: '/refresh'),
           ContentsItem(title: pullRefreshTitle, route: '/pullRefresh'),
           ContentsItem(title: modalTitle, route: '/bottomModal'),
+          ContentsItem(title: emojiPickerTitle, route: '/emojiPicker'),
           //ContentsItem(title: sampleTitle, widget: const SamplePage()),
         ],
       ),

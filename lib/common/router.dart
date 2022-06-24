@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templates_anabebe/contents/badge/page.dart';
 import 'package:flutter_templates_anabebe/contents/bottom_modal/page.dart';
+import 'package:flutter_templates_anabebe/contents/emoji_picker/page.dart';
 import 'package:flutter_templates_anabebe/contents/page_view/home_page.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/page.dart';
 import 'package:flutter_templates_anabebe/contents/refresh/page2.dart';
@@ -58,6 +59,14 @@ final router = GoRouter(
       pageBuilder: (context, state) => MaterialPage(
         key: state.pageKey,
         child: const BottomModalPage(),
+      ),
+    ),
+    GoRoute(
+      name: 'emojiPicker',
+      path: '/emojiPicker',
+      pageBuilder: (context, state) => MaterialPage(
+        key: state.pageKey,
+        child: const EmojiPickerPage(),
       ),
     ),
   ],
